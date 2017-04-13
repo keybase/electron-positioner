@@ -68,6 +68,22 @@ export default class Positioner {
       }
     }
 
+    if (position == 'winStartMenu') {
+        if (screenSize.x > 0){
+        // start menu on left
+        position = 'trayBottomLeft';
+        } else if (screenSize.y > 0) {
+        // start menu on top
+        position = 'trayRight';
+      } else if (trayPosition.x > screenSize.x) {
+        // start menu on right
+        position = 'bottomRight';
+      } else {
+        // start menu on bottom
+        position = 'trayBottomRight';
+      }
+    }
+
     // Default to right if the window is bigger than the space left.
     // Because on Windows the window might get out of bounds and dissappear.
     if (position.substr(0, 4) === 'tray') {
